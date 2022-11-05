@@ -1,0 +1,710 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Mon Jun 27 16:12:20 2022
+
+# Variables
+
+# 'override' directive
+GNUMAKEFLAGS := 
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = ubuntu
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_SESSION_CLASS = user
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from 'Makefile', line 8)
+INCLUDES = $(wildcard $(LIB)/include/*.hpp)
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /run/user/1000/gdm/Xauthority
+# environment
+GDMSESSION = ubuntu
+# environment
+XMODIFIERS = @im=ibus
+# makefile
+CURDIR := /home/alex/tmp/Sources/Courses/ULA/AyDA/ImageResizing/dist
+# makefile
+SHELL = /bin/sh
+# environment
+VTE_VERSION = 6003
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+JOURNAL_STREAM = 8:69725
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
+# environment
+GOLANG_HOME = /usr/local/go
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+JAVA_HOME = /opt/java
+# automatic
+@F = $(notdir $@)
+# makefile (from 'Makefile', line 13)
+TESTDIR = ./test
+# environment
+IM_CONFIG_PHASE = 1
+# environment
+USERNAME = alex
+# makefile (from 'Makefile', line 9)
+SOURCES = $(wildcard $(LIB)/src/*.cpp)
+# environment
+MAKELEVEL := 0
+# environment
+MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
+# environment
+XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=690b1c9a8e8d360af335dbb362b9e61d
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+_ = /usr/bin/code
+# environment
+MANAGERPID = 2335
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+LC_NAME = es_CO.UTF-8
+# environment
+VSCODE_CWD = /home/alex/tmp/Sources/Courses/ULA/AyDA/ImageResizing/dist
+# makefile (from 'Makefile', line 18)
+MAINDIR = ./main
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /opt/node/bin:/opt/Postman:/opt/java/bin:/opt/idea/bin:/opt/android-studio/bin:/usr/local/go/bin:/home/alex/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+ANDROID_NDK_HOME = /home/alex/Android/Sdk/ndk/23.1.7779620
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+SESSION_MANAGER = local/geniussports:@/tmp/.ICE-unix/2577,unix/geniussports:/tmp/.ICE-unix/2577
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+POSTMAN_HOME = /opt/Postman
+# environment
+NDK = /home/alex/Android/Sdk/ndk/23.1.7779620
+# environment
+XDG_MENU_PREFIX = gnome-
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ANDROID_STUDIO_HOME = /opt/android-studio
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = 8e05b31847b24322aef32c66eb481c94
+# environment
+ANDROID_HOME = /home/alex/Android/Sdk
+# makefile (from 'Makefile', line 7)
+LIB = ./lib
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# makefile (from 'Makefile', line 23)
+LIBLINK = $(OBJECTS) -lpthread -lpng
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# environment
+XDG_SESSION_DESKTOP = ubuntu
+# environment
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+ANDROID_SDK_HOME = /home/alex/Android/Sdk
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/alex/tmp/Sources/Courses/ULA/AyDA/ImageResizing/dist
+# default
+.LOADED := 
+# environment
+SSH_AGENT_PID = 2537
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/alex
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /home/alex/.config/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
+# makefile (from 'Makefile', line 2)
+WARN = -Wall -Wextra -Wcast-align -Wno-sign-compare -Wno-write-strings -Wno-parentheses -Wfloat-equal -pedantic
+# environment
+LOGNAME = alex
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# automatic
++F = $(notdir $+)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# makefile (from 'Makefile', line 14)
+TEST = $(wildcard $(TESTDIR)/src/*.cpp)
+# environment
+LC_TIME = es_CO.UTF-8
+# environment
+COLORTERM = truecolor
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = ibus
+# environment
+SHLVL = 1
+# environment
+NODE_HOME = /opt/node
+# makefile (from 'Makefile', line 20)
+MKMAIN = $(MAIN:$(MAINDIR)/src/%.cpp=$(MAINDIR)/bin/%)
+# environment
+AWS_PROFILE = PowerUserAccess-147617158656
+# environment
+GNOME_SHELL_SESSION_MODE = ubuntu
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-10841d2a-a24f-4449-9767-f26e80a0cdc9.sock
+# default
+MAKE_VERSION := 4.2.1
+# environment
+USER = alex
+# environment
+LC_MONETARY = es_CO.UTF-8
+# makefile
+.DEFAULT_GOAL := test
+# environment
+XDG_CURRENT_DESKTOP = Unity
+# environment
+IDEA_HOME = /opt/idea
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+LC_TELEPHONE = es_CO.UTF-8
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-d32d3ff9-1.68.0-main.sock
+# makefile (from 'Makefile', line 15)
+MKTEST = $(TEST:$(TESTDIR)/src/%.cpp=$(TESTDIR)/bin/%)
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# makefile (from 'Makefile', line 19)
+MAIN = $(wildcard $(MAINDIR)/src/*.cpp)
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# makefile (from 'Makefile', line 22)
+INCLUDEPATH = -I$(LIB)/include
+# environment
+LC_PAPER = es_CO.UTF-8
+# environment
+QT_ACCESSIBILITY = 1
+# environment
+DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
+# default
+MAKEFILES := 
+# environment
+LC_NUMERIC = es_CO.UTF-8
+# automatic
+<F = $(notdir $<)
+# makefile (from 'Makefile', line 1)
+CXX = clang++ -std=c++17
+# environment
+LC_MEASUREMENT = es_CO.UTF-8
+# environment
+LC_ALL = C
+# environment
+DBUS_STARTER_BUS_TYPE = session
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/a5280df8_833e_49ad_b9a1_6ad7afc36d9f
+# automatic
+^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.236
+# default
+SUFFIXES := 
+# makefile (from 'Makefile', line 4)
+FLAGS = -DDEBUG -g -O0
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+WINDOWPATH = 2
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+LC_IDENTIFICATION = es_CO.UTF-8
+# default
+.RECIPEPREFIX := 
+# makefile (from 'Makefile', line 10)
+OBJECTS = $(SOURCES:$(LIB)/src/%.cpp=$(LIB)/obj/%.o)
+# environment
+LC_ADDRESS = es_CO.UTF-8
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+VSCODE_PID = 100213
+# environment
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=690b1c9a8e8d360af335dbb362b9e61d
+# variable set hash-table stats:
+# Load=139/1024=14%, Rehash=0, Collisions=22/209=11%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+ 
+# test/src (device 2049, inode 38929142): 6 files, no impossibilities.
+# ./main/src (device 2049, inode 38929114): 6 files, no impossibilities.
+# main/src (device 2049, inode 38929114): 6 files, no impossibilities.
+# . (device 2049, inode 37618794): 9 files, no impossibilities.
+# lib/src (device 2049, inode 38012813): 9 files, no impossibilities.
+# ./lib/include (device 2049, inode 37881292): 9 files, no impossibilities.
+# lib/obj (device 2049, inode 38143754): 2 files, no impossibilities.
+# ./lib/src (device 2049, inode 38012813): 9 files, no impossibilities.
+# ./test/src (device 2049, inode 38929142): 6 files, no impossibilities.
+
+# 62 files, no impossibilities in 9 directories.
+
+# Implicit Rules
+
+lib/obj/%.o: lib/src/%.cpp
+#  recipe to execute (from 'Makefile', line 26):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) -c $< -o $@
+	
+
+test/bin/%: test/src/%.cpp lib/obj/Carve.o lib/obj/Color.o lib/obj/IOUtils.o lib/obj/TestUtils.o lib/obj/Png.o lib/obj/Seam.o lib/obj/Energy.o
+#  recipe to execute (from 'Makefile', line 29):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) $< -o $@ $(LIBLINK)
+
+main/bin/%: main/src/%.cpp lib/obj/Carve.o lib/obj/Color.o lib/obj/IOUtils.o lib/obj/TestUtils.o lib/obj/Png.o lib/obj/Seam.o lib/obj/Energy.o
+#  recipe to execute (from 'Makefile', line 34):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) $< -o $@ $(LIBLINK)
+	
+
+# 3 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+lib/obj/Energy.o: lib/src/Energy.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Energy'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 26):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) -c $< -o $@
+	
+
+# Not a target:
+lib/include/IOUtils.hpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-26 22:27:43.159709787
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+lib/include/Seam.hpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-26 22:11:25.444593
+#  File has been updated.
+#  Successfully updated.
+
+lib/obj/IOUtils.o: lib/src/IOUtils.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'IOUtils'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 26):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) -c $< -o $@
+	
+
+all: main test
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+
+lib/obj/Seam.o: lib/src/Seam.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Seam'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 26):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) -c $< -o $@
+	
+
+.PHONY:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+test/bin/Carve: test/src/Carve.cpp lib/obj/Carve.o lib/obj/Color.o lib/obj/IOUtils.o lib/obj/TestUtils.o lib/obj/Png.o lib/obj/Seam.o lib/obj/Energy.o
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Carve'
+#  Last modified 2022-05-26 22:27:54.303650906
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+#  recipe to execute (from 'Makefile', line 29):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) $< -o $@ $(LIBLINK)
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-31 13:09:53.095926952
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+test/src/Carve.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 14:54:14.782495475
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+test/bin/Color:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+test: test/src/Carve.cpp test/src/Color.cpp test/src/Seam.cpp test/src/Energy.cpp lib/include/Seam.hpp lib/include/IOUtils.hpp lib/include/TestUtils.hpp lib/include/Png.hpp lib/include/Energy.hpp lib/include/Carve.hpp lib/include/Color.hpp lib/src/Carve.cpp lib/src/Color.cpp lib/src/IOUtils.cpp lib/src/TestUtils.cpp lib/src/Png.cpp lib/src/Seam.cpp lib/src/Energy.cpp test/bin/Carve test/bin/Color test/bin/Seam test/bin/Energy
+#  Implicit rule search has been done.
+#  Last modified 2022-05-23 16:43:57.119065
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+
+# Not a target:
+test/src/Color.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 20:25:47.546346
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+lib/src/Carve.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-26 22:21:13.920946257
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+lib/src/TestUtils.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 20:10:58.255935
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+test/bin/Energy:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/src/Png.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 20:09:42.860124
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+lib/src/Color.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 20:09:20.704182
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/include/Carve.hpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-26 22:13:17.184622
+#  File has been updated.
+#  Successfully updated.
+
+lib/obj/Carve.o: lib/src/Carve.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Carve'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := lib/obj/Carve.o
+# automatic
+# % := 
+# automatic
+# * := Carve
+# automatic
+# + := lib/src/Carve.cpp
+# automatic
+# | := 
+# automatic
+# < := lib/src/Carve.cpp
+# automatic
+# ^ := lib/src/Carve.cpp
+# automatic
+# ? := lib/src/Carve.cpp
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/17=6%
+#  recipe to execute (from 'Makefile', line 26):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) -c $< -o $@
+	
+
+# Not a target:
+test/src/Energy.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 14:54:14.782495475
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+test/bin/Seam:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+lib/include/TestUtils.hpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-31 10:58:55.732052029
+#  File has been updated.
+#  Successfully updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 42):
+	$(RM) $(MKTEST) $(MKMAIN)
+
+lib/obj/TestUtils.o: lib/src/TestUtils.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'TestUtils'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 26):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) -c $< -o $@
+	
+
+main/bin/SeamCarvingVertical: main/src/SeamCarvingVertical.cpp lib/obj/Carve.o lib/obj/Color.o lib/obj/IOUtils.o lib/obj/TestUtils.o lib/obj/Png.o lib/obj/Seam.o lib/obj/Energy.o
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'SeamCarvingVertical'
+#  Last modified 2022-05-26 22:27:53.563654775
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 34):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) $< -o $@ $(LIBLINK)
+	
+
+# Not a target:
+lib/include/Png.hpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-23 15:42:48.622261
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+lib/include/Color.hpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-23 15:43:23.621843
+#  File has been updated.
+#  Successfully updated.
+
+lib/obj/Png.o: lib/src/Png.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Png'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 26):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) -c $< -o $@
+	
+
+# Not a target:
+test/src/Seam.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-07 14:54:14.782495475
+#  File has been updated.
+#  Successfully updated.
+
+lib/obj/Color.o: lib/src/Color.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'Color'
+#  File is an intermediate prerequisite.
+#  File does not exist.
+#  File has not been updated.
+ 
+#  recipe to execute (from 'Makefile', line 26):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) -c $< -o $@
+	
+
+# Not a target:
+main/src/SeamCarvingVertical.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-26 09:33:29.470204
+#  File has been updated.
+#  Successfully updated.
+
+main/bin/ImageEnergy: main/src/ImageEnergy.cpp lib/obj/Carve.o lib/obj/Color.o lib/obj/IOUtils.o lib/obj/TestUtils.o lib/obj/Png.o lib/obj/Seam.o lib/obj/Energy.o
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'ImageEnergy'
+#  Last modified 2022-05-26 22:27:52.767658942
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 34):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) $< -o $@ $(LIBLINK)
+	
+
+main: main/src/ImageEnergy.cpp main/src/SeamVertical.cpp main/src/SeamCarvingVertical.cpp main/src/MinSeamVertical.cpp lib/include/Seam.hpp lib/include/IOUtils.hpp lib/include/TestUtils.hpp lib/include/Png.hpp lib/include/Energy.hpp lib/include/Carve.hpp lib/include/Color.hpp lib/src/Carve.cpp lib/src/Color.cpp lib/src/IOUtils.cpp lib/src/TestUtils.cpp lib/src/Png.cpp lib/src/Seam.cpp lib/src/Energy.cpp main/bin/ImageEnergy main/bin/SeamVertical main/bin/SeamCarvingVertical main/bin/MinSeamVertical
+#  Implicit rule search has been done.
+#  Last modified 2022-05-23 16:44:07.770998
+#  File has been updated.
+#  Successfully updated.
+
+main/bin/MinSeamVertical: main/src/MinSeamVertical.cpp lib/obj/Carve.o lib/obj/Color.o lib/obj/IOUtils.o lib/obj/TestUtils.o lib/obj/Png.o lib/obj/Seam.o lib/obj/Energy.o
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'MinSeamVertical'
+#  Last modified 2022-05-26 22:27:53.903652996
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 34):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) $< -o $@ $(LIBLINK)
+	
+
+# Not a target:
+lib/src/Energy.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-26 22:22:23.377010931
+#  File has been updated.
+#  Successfully updated.
+
+main/bin/SeamVertical: main/src/SeamVertical.cpp lib/obj/Carve.o lib/obj/Color.o lib/obj/IOUtils.o lib/obj/TestUtils.o lib/obj/Png.o lib/obj/Seam.o lib/obj/Energy.o
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'SeamVertical'
+#  Last modified 2022-05-26 22:27:53.207656638
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 34):
+	$(CXX) $(FLAGS) $(INCLUDEPATH) $< -o $@ $(LIBLINK)
+	
+
+# Not a target:
+main/src/ImageEnergy.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 20:28:18.090513
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+lib/src/IOUtils.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 20:09:37.680138
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+main/src/MinSeamVertical.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-25 23:31:58.86141
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+main/src/SeamVertical.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-26 09:32:15.55033
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+lib/src/Seam.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-26 22:24:01.721107377
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+lib/include/Energy.hpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-26 21:57:21.71392
+#  File has been updated.
+#  Successfully updated.
+
+# files hash-table stats:
+# Load=45/1024=4%, Rehash=0, Collisions=0/224=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 96 / storage = 1367 B / avg = 14 B
+# current buf: size = 8162 B / used = 1367 B / count = 96 / avg = 14 B
+
+# strcache performance: lookups = 242 / hit rate = 60%
+# hash-table stats:
+# Load=96/8192=1%, Rehash=0, Collisions=7/242=3%
+# Finished Make data base on Mon Jun 27 16:12:20 2022
+
+ 

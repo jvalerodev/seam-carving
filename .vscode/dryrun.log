@@ -1,0 +1,16 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/alex/tmp/Sources/Courses/ULA/AyDA/ImageResizing/dist'
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include -c lib/src/Carve.cpp -o lib/obj/Carve.o
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include -c lib/src/Color.cpp -o lib/obj/Color.o
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include -c lib/src/IOUtils.cpp -o lib/obj/IOUtils.o
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include -c lib/src/TestUtils.cpp -o lib/obj/TestUtils.o
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include -c lib/src/Png.cpp -o lib/obj/Png.o
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include -c lib/src/Seam.cpp -o lib/obj/Seam.o
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include -c lib/src/Energy.cpp -o lib/obj/Energy.o
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include test/src/Carve.cpp -o test/bin/Carve ./lib/obj/Carve.o ./lib/obj/Color.o ./lib/obj/IOUtils.o ./lib/obj/TestUtils.o ./lib/obj/Png.o ./lib/obj/Seam.o ./lib/obj/Energy.o -lpthread -lpng
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include test/src/Color.cpp -o test/bin/Color ./lib/obj/Carve.o ./lib/obj/Color.o ./lib/obj/IOUtils.o ./lib/obj/TestUtils.o ./lib/obj/Png.o ./lib/obj/Seam.o ./lib/obj/Energy.o -lpthread -lpng
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include test/src/Seam.cpp -o test/bin/Seam ./lib/obj/Carve.o ./lib/obj/Color.o ./lib/obj/IOUtils.o ./lib/obj/TestUtils.o ./lib/obj/Png.o ./lib/obj/Seam.o ./lib/obj/Energy.o -lpthread -lpng
+clang++ -std=c++17 -DDEBUG -g -O0 -I./lib/include test/src/Energy.cpp -o test/bin/Energy ./lib/obj/Carve.o ./lib/obj/Color.o ./lib/obj/IOUtils.o ./lib/obj/TestUtils.o ./lib/obj/Png.o ./lib/obj/Seam.o ./lib/obj/Energy.o -lpthread -lpng
+rm lib/obj/Energy.o lib/obj/IOUtils.o lib/obj/Seam.o lib/obj/Carve.o lib/obj/TestUtils.o lib/obj/Png.o lib/obj/Color.o
+make: Leaving directory '/home/alex/tmp/Sources/Courses/ULA/AyDA/ImageResizing/dist'
+ 
