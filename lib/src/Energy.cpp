@@ -4,6 +4,8 @@
 #include <Color.hpp>
 #include <Energy.hpp>
 
+unsigned get_energy(const std::vector<std::vector<Color>> &pixels, int width, int height, int i, int j) noexcept;
+
 Energy::Energy(const std::vector<std::vector<Color>> &_pixels) noexcept
     : pixels(_pixels)
 {
@@ -11,61 +13,15 @@ Energy::Energy(const std::vector<std::vector<Color>> &_pixels) noexcept
 
 std::vector<std::vector<unsigned>> Energy::compute_energy() const noexcept
 {
-  int height = pixels.size();
-  int width = pixels[0].size();
+  long height = pixels.size();
+  long width = pixels[0].size();
   std::vector<std::vector<unsigned>> energy_matrix(height, std::vector<unsigned>(width, 0));
 
   for (int i = 0; i < height; i++)
   {
     for (int j = 0; j < width; j++)
     {
-      int rx = 0, gx = 0, bx = 0;
-      int ry = 0, gy = 0, by = 0;
-
-      // X gradient
-      if (j == 0) // Left of the image
-      {
-        rx = pixels[i][j].get_red() - pixels[i][j + 1].get_red();
-        gx = pixels[i][j].get_green() - pixels[i][j + 1].get_green();
-        bx = pixels[i][j].get_blue() - pixels[i][j + 1].get_blue();
-      }
-      else if (j == width - 1) // Rigth of the image
-      {
-        rx = pixels[i][j].get_red() - pixels[i][j - 1].get_red();
-        gx = pixels[i][j].get_green() - pixels[i][j - 1].get_green();
-        bx = pixels[i][j].get_blue() - pixels[i][j - 1].get_blue();
-      }
-      else
-      {
-        rx = pixels[i][j - 1].get_red() - pixels[i][j + 1].get_red();
-        gx = pixels[i][j - 1].get_green() - pixels[i][j + 1].get_green();
-        bx = pixels[i][j - 1].get_blue() - pixels[i][j + 1].get_blue();
-      }
-
-      // Y gradient
-      if (i == 0) // Top of the image
-      {
-        ry = pixels[i][j].get_red() - pixels[i + 1][j].get_red();
-        gy = pixels[i][j].get_green() - pixels[i + 1][j].get_green();
-        by = pixels[i][j].get_blue() - pixels[i + 1][j].get_blue();
-      }
-      else if (i == height - 1) // Bottom of the image
-      {
-        ry = pixels[i][j].get_red() - pixels[i - 1][j].get_red();
-        gy = pixels[i][j].get_green() - pixels[i - 1][j].get_green();
-        by = pixels[i][j].get_blue() - pixels[i - 1][j].get_blue();
-      }
-      else
-      {
-        ry = pixels[i - 1][j].get_red() - pixels[i + 1][j].get_red();
-        gy = pixels[i - 1][j].get_green() - pixels[i + 1][j].get_green();
-        by = pixels[i - 1][j].get_blue() - pixels[i + 1][j].get_blue();
-      }
-
-      float x_grad = sqrt(pow(rx, 2) + pow(gx, 2) + pow(bx, 2));
-      float y_grad = sqrt(pow(ry, 2) + pow(gy, 2) + pow(by, 2));
-      unsigned energy = x_grad + y_grad;
-
+      unsigned energy = get_energy(pixels, width, height, i, j);
       energy_matrix[i][j] = energy;
     }
   }
@@ -106,7 +62,59 @@ std::vector<std::vector<Color>> Energy::energy_to_colors(const std::vector<std::
 
 unsigned Energy::energy_at(std::size_t i, std::size_t j) const noexcept
 {
-  // TODO
+  long height = pixels.size();
+  long width = pixels[0].size();
 
-  return 0;
+  return get_energy(pixels, width, height, i, j);
+}
+
+unsigned get_energy(const std::vector<std::vector<Color>> &pixels, long width, long height, int i, int j) noexcept
+{
+  int rx = 0, gx = 0, bx = 0;
+  int ry = 0, gy = 0, by = 0;
+
+  // X gradient
+  if (j == 0) // Left of the image
+  {
+    rx = pixels[i][j].get_red() - pixels[i][j + 1].get_red();
+    gx = pixels[i][j].get_green() - pixels[i][j + 1].get_green();
+    bx = pixels[i][j].get_blue() - pixels[i][j + 1].get_blue();
+  }
+  else if (j == width - 1) // Rigth of the image
+  {
+    rx = pixels[i][j].get_red() - pixels[i][j - 1].get_red();
+    gx = pixels[i][j].get_green() - pixels[i][j - 1].get_green();
+    bx = pixels[i][j].get_blue() - pixels[i][j - 1].get_blue();
+  }
+  else
+  {
+    rx = pixels[i][j - 1].get_red() - pixels[i][j + 1].get_red();
+    gx = pixels[i][j - 1].get_green() - pixels[i][j + 1].get_green();
+    bx = pixels[i][j - 1].get_blue() - pixels[i][j + 1].get_blue();
+  }
+
+  // Y gradient
+  if (i == 0) // Top of the image
+  {
+    ry = pixels[i][j].get_red() - pixels[i + 1][j].get_red();
+    gy = pixels[i][j].get_green() - pixels[i + 1][j].get_green();
+    by = pixels[i][j].get_blue() - pixels[i + 1][j].get_blue();
+  }
+  else if (i == height - 1) // Bottom of the image
+  {
+    ry = pixels[i][j].get_red() - pixels[i - 1][j].get_red();
+    gy = pixels[i][j].get_green() - pixels[i - 1][j].get_green();
+    by = pixels[i][j].get_blue() - pixels[i - 1][j].get_blue();
+  }
+  else
+  {
+    ry = pixels[i - 1][j].get_red() - pixels[i + 1][j].get_red();
+    gy = pixels[i - 1][j].get_green() - pixels[i + 1][j].get_green();
+    by = pixels[i - 1][j].get_blue() - pixels[i + 1][j].get_blue();
+  }
+
+  unsigned x_grad = pow(rx, 2) + pow(gx, 2) + pow(bx, 2);
+  unsigned y_grad = pow(ry, 2) + pow(gy, 2) + pow(by, 2);
+
+  return x_grad + y_grad;
 }
