@@ -4,7 +4,7 @@
 #include <Color.hpp>
 #include <Energy.hpp>
 
-unsigned get_energy(const std::vector<std::vector<Color>> &pixels, int width, int height, int i, int j) noexcept;
+unsigned get_energy(const std::vector<std::vector<Color>> &pixels, long width, long height, int i, int j) noexcept;
 
 Energy::Energy(const std::vector<std::vector<Color>> &_pixels) noexcept
     : pixels(_pixels)

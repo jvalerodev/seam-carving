@@ -7,11 +7,11 @@
 
 using namespace std;
 
-vector<vector<Color>> read_image(const string& filename)
+vector<vector<Color>> read_image(const string &filename)
 {
   Png input{filename};
   vector<vector<Color>> pixels;
-  
+
   cout << "Reading image\n";
   if (!input.read(pixels))
   {
@@ -22,13 +22,13 @@ vector<vector<Color>> read_image(const string& filename)
   return pixels;
 }
 
-void write_image(const string& filename, const vector<vector<Color>>& pixels)
+void write_image(const string &filename, const vector<vector<Color>> &pixels)
 {
   auto dot_position = filename.find_last_of('.');
   string fn{filename.substr(0, dot_position) + string{"-seam"} + filename.substr(dot_position)};
 
   Png output{fn};
-  
+
   cout << "Writing image\n";
   if (!output.write(pixels))
   {
@@ -39,7 +39,7 @@ void write_image(const string& filename, const vector<vector<Color>>& pixels)
   cout << "Created the file " << fn << " successfully\n";
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
   if (argc < 2)
   {
@@ -53,7 +53,6 @@ int main(int argc, char* argv[])
   auto computed_energy = energy.compute_energy();
   Seam seam(computed_energy);
   auto computed_seam = seam.compute_vertical_seam();
-
 
   write_image(argv[1], Seam::min_seam_to_colors(pixels, computed_seam.first));
 
