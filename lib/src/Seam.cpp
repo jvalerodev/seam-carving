@@ -144,19 +144,21 @@ std::pair<std::vector<std::size_t>, unsigned> get_optimal_path(std::vector<std::
   long height = cumulative_energy.size();
   long width = cumulative_energy[0].size();
 
-  std::size_t index = get_min_energy_pixel(cumulative_energy).first;
+  std::pair<std::size_t, unsigned> min_energy_pixel_pair = get_min_energy_pixel(cumulative_energy);
+  std::size_t index = min_energy_pixel_pair.first;
+  unsigned min_energy = min_energy_pixel_pair.second;
 
   std::vector<std::size_t> optimal_pixel_path(height, 0);
   optimal_pixel_path[height - 1] = index;
 
   for (int i = height - 1; i > 0; i--)
   {
-    if (index == 0) // Bottom-Left
+    if (index == 0) // Left
     {
       if (cumulative_energy[i - 1][index] > cumulative_energy[i - 1][index + 1]) // Top vs. Top-Right
         index++;
     }
-    else if (index == height - 1) // Bottom-Right
+    else if (index == width - 1) // Right
     {
       if (cumulative_energy[i - 1][index] > cumulative_energy[i - 1][index - 1]) // Top vs. Top-Left
         index--;
@@ -177,7 +179,5 @@ std::pair<std::vector<std::size_t>, unsigned> get_optimal_path(std::vector<std::
     optimal_pixel_path[i - 1] = index; // Save path
   }
 
-  unsigned energy = cumulative_energy[0][index];
-
-  return std::make_pair(optimal_pixel_path, energy);
+  return std::make_pair(optimal_pixel_path, min_energy);
 }
