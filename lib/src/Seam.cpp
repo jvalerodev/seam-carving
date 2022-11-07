@@ -1,4 +1,3 @@
-#include <iostream>
 #include <Color.hpp>
 #include <Seam.hpp>
 
@@ -152,12 +151,12 @@ std::pair<std::vector<std::size_t>, unsigned> get_optimal_path(std::vector<std::
 
   for (int i = height - 1; i > 0; i--)
   {
-    if (index == 0) // Bottom-Right
+    if (index == 0) // Bottom-Left
     {
       if (cumulative_energy[i - 1][index] > cumulative_energy[i - 1][index + 1]) // Top vs. Top-Right
         index++;
     }
-    else if (index == height - 1) // Bottom-Left
+    else if (index == height - 1) // Bottom-Right
     {
       if (cumulative_energy[i - 1][index] > cumulative_energy[i - 1][index - 1]) // Top vs. Top-Left
         index--;
@@ -178,5 +177,7 @@ std::pair<std::vector<std::size_t>, unsigned> get_optimal_path(std::vector<std::
     optimal_pixel_path[i - 1] = index; // Save path
   }
 
-  return std::make_pair(optimal_pixel_path, index);
+  unsigned energy = cumulative_energy[0][index];
+
+  return std::make_pair(optimal_pixel_path, energy);
 }
