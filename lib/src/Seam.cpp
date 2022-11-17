@@ -4,10 +4,14 @@
 unsigned min_between_two(const unsigned a, const unsigned b) noexcept;
 unsigned min_between_three(const unsigned a, const unsigned b, const unsigned c) noexcept;
 
-std::vector<std::vector<unsigned>> get_cumulative_energy_matrix(const std::vector<std::vector<unsigned>> &energy) noexcept;
-std::pair<std::size_t, unsigned> get_min_energy_pixel(std::vector<std::vector<unsigned>> cumulative_energy) noexcept;
+// Vertical functions
+std::vector<std::vector<unsigned>> get_vertical_cumulative_energy_matrix(const std::vector<std::vector<unsigned>> &energy) noexcept;
+std::pair<std::size_t, unsigned> get_min_vertical_energy_pixel(const std::vector<std::vector<unsigned>> &cumulative_energy) noexcept;
+std::pair<std::vector<std::size_t>, unsigned> get_optimal_vertical_path(std::vector<std::vector<unsigned>> cumulative_energy) noexcept;
 
-std::pair<std::vector<std::size_t>, unsigned> get_optimal_path(std::vector<std::vector<unsigned>> cumulative_energy) noexcept;
+// Horizontal functions
+std::vector<std::vector<unsigned>> get_horizontal_cumulative_energy_matrix(const std::vector<std::vector<unsigned>> &energy) noexcept;
+std::pair<std::size_t, unsigned> get_min_horizontal_energy_pixel(const std::vector<std::vector<unsigned>> &cumulative_energy) noexcept;
 
 Seam::Seam(const std::vector<std::vector<unsigned>> &_energy) noexcept
     : energy(_energy)
@@ -16,19 +20,19 @@ Seam::Seam(const std::vector<std::vector<unsigned>> &_energy) noexcept
 
 std::pair<std::size_t, unsigned> Seam::compute_vertical_seam() const noexcept
 {
-  std::vector<std::vector<unsigned>> cumulative_energy = get_cumulative_energy_matrix(energy);
+  std::vector<std::vector<unsigned>> cumulative_energy = get_vertical_cumulative_energy_matrix(energy);
 
-  return get_min_energy_pixel(cumulative_energy);
+  return get_min_vertical_energy_pixel(cumulative_energy);
 }
 
 std::pair<std::vector<std::size_t>, unsigned> Seam::compute_vertical_seams() const noexcept
 {
-  std::vector<std::vector<unsigned>> cumulative_energy = get_cumulative_energy_matrix(energy);
+  std::vector<std::vector<unsigned>> cumulative_energy = get_vertical_cumulative_energy_matrix(energy);
 
-  return get_optimal_path(cumulative_energy);
+  return get_optimal_vertical_path(cumulative_energy);
 }
 
-std::vector<std::vector<Color>> Seam::min_seam_to_colors(const std::vector<std::vector<Color>> &pixels, std::size_t end_j) noexcept
+std::vector<std::vector<Color>> Seam::min_vertical_seam_to_colors(const std::vector<std::vector<Color>> &pixels, std::size_t end_j) noexcept
 {
   long h = pixels.size();
   long w = pixels[0].size();
@@ -73,6 +77,36 @@ std::vector<std::vector<Color>> Seam::min_seams_to_colors(const std::vector<std:
   return new_pixels;
 }
 
+std::pair<std::size_t, unsigned> Seam::compute_horizontal_seam() const noexcept
+{
+  std::vector<std::vector<unsigned>> cumulative_energy = get_horizontal_cumulative_energy_matrix(energy);
+
+  return get_min_horizontal_energy_pixel(cumulative_energy);
+}
+
+std::vector<std::vector<Color>> Seam::min_horizontal_seam_to_colors(const std::vector<std::vector<Color>> &pixels, std::size_t end_i) noexcept
+{
+  long h = pixels.size();
+  long w = pixels[0].size();
+
+  std::vector<std::vector<Color>> new_pixels{pixels};
+
+  std::size_t min_i = std::max(long(end_i) - 5, 0L);
+  std::size_t max_i = std::min(long(end_i) + 5, w - 1);
+
+  std::size_t min_j = std::max(w - 11, 0L);
+
+  for (std::size_t j = min_j; j < w; ++j)
+  {
+    for (std::size_t i = min_i; i <= max_i; ++i)
+    {
+      new_pixels[i][j] = Color(255, 0, 0);
+    }
+  }
+
+  return new_pixels;
+}
+
 unsigned min_between_two(const unsigned a, const unsigned b) noexcept
 {
   return std::min(a, b);
@@ -83,7 +117,7 @@ unsigned min_between_three(const unsigned a, const unsigned b, const unsigned c)
   return std::min(a, std::min(b, c));
 }
 
-std::vector<std::vector<unsigned>> get_cumulative_energy_matrix(const std::vector<std::vector<unsigned>> &energy) noexcept
+std::vector<std::vector<unsigned>> get_vertical_cumulative_energy_matrix(const std::vector<std::vector<unsigned>> &energy) noexcept
 {
   long height = energy.size();
   long width = energy[0].size();
@@ -119,7 +153,7 @@ std::vector<std::vector<unsigned>> get_cumulative_energy_matrix(const std::vecto
   return cumulative_energy;
 }
 
-std::pair<std::size_t, unsigned> get_min_energy_pixel(std::vector<std::vector<unsigned>> cumulative_energy) noexcept
+std::pair<std::size_t, unsigned> get_min_vertical_energy_pixel(const std::vector<std::vector<unsigned>> &cumulative_energy) noexcept
 {
   long height = cumulative_energy.size();
   long width = cumulative_energy[0].size();
@@ -139,12 +173,12 @@ std::pair<std::size_t, unsigned> get_min_energy_pixel(std::vector<std::vector<un
   return std::make_pair(index, min_energy);
 }
 
-std::pair<std::vector<std::size_t>, unsigned> get_optimal_path(std::vector<std::vector<unsigned>> cumulative_energy) noexcept
+std::pair<std::vector<std::size_t>, unsigned> get_optimal_vertical_path(std::vector<std::vector<unsigned>> cumulative_energy) noexcept
 {
   long height = cumulative_energy.size();
   long width = cumulative_energy[0].size();
 
-  std::pair<std::size_t, unsigned> min_energy_pixel_pair = get_min_energy_pixel(cumulative_energy);
+  std::pair<std::size_t, unsigned> min_energy_pixel_pair = get_min_vertical_energy_pixel(cumulative_energy);
   std::size_t index = min_energy_pixel_pair.first;
   unsigned min_energy = min_energy_pixel_pair.second;
 
@@ -180,4 +214,60 @@ std::pair<std::vector<std::size_t>, unsigned> get_optimal_path(std::vector<std::
   }
 
   return std::make_pair(optimal_pixel_path, min_energy);
+}
+
+std::vector<std::vector<unsigned>> get_horizontal_cumulative_energy_matrix(const std::vector<std::vector<unsigned>> &energy) noexcept
+{
+  long height = energy.size();
+  long width = energy[0].size();
+  std::vector<std::vector<unsigned>> cumulative_energy(height, std::vector<unsigned>(width, 0));
+
+  for (int j = 0; j < width; j++)
+  {
+    for (int i = 0; i < height; i++)
+    {
+      unsigned pixel_energy = energy[i][j];
+
+      if (j == 0)
+      {
+        cumulative_energy[i][j] = pixel_energy;
+        continue;
+      }
+
+      if (i == 0)
+      {
+        cumulative_energy[i][j] = pixel_energy + min_between_two(cumulative_energy[i][j - 1], cumulative_energy[i + 1][j - 1]);
+      }
+      else if (i == height - 1)
+      {
+        cumulative_energy[i][j] = pixel_energy + min_between_two(cumulative_energy[i][j - 1], cumulative_energy[i - 1][j - 1]);
+      }
+      else
+      {
+        cumulative_energy[i][j] = pixel_energy + min_between_three(cumulative_energy[i - 1][j - 1], cumulative_energy[i][j - 1], cumulative_energy[i + 1][j - 1]);
+      }
+    }
+  }
+
+  return cumulative_energy;
+}
+
+std::pair<std::size_t, unsigned> get_min_horizontal_energy_pixel(const std::vector<std::vector<unsigned>> &cumulative_energy) noexcept
+{
+  long height = cumulative_energy.size();
+  long width = cumulative_energy[0].size();
+
+  long min_energy = cumulative_energy[0][width - 1];
+  int index = 0;
+
+  for (int i = 0; i < height; i++)
+  {
+    if (cumulative_energy[i][width - 1] < min_energy)
+    {
+      min_energy = cumulative_energy[i][width - 1];
+      index = i;
+    }
+  }
+
+  return std::make_pair(index, min_energy);
 }
