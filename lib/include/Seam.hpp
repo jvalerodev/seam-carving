@@ -60,7 +60,7 @@ public:
    * @param seam_cols the list of j-coordinates forming the lowest-energy seam.
    * @return std::vector<std::vector<Color>>
    */
-  static std::vector<std::vector<Color>> min_seams_to_colors(const std::vector<std::vector<Color>> &pixels, const std::vector<std::size_t> &seam_cols) noexcept;
+  static std::vector<std::vector<Color>> min_vertical_seams_to_colors(const std::vector<std::vector<Color>> &pixels, const std::vector<std::size_t> &seam_cols) noexcept;
 
   /**
    * @brief Find the lowest-energy horizontal seam given the energy of each pixel in the input image.
@@ -75,6 +75,20 @@ public:
   std::pair<std::size_t, unsigned> compute_horizontal_seam() const noexcept;
 
   /**
+   * @brief Find the lowest-energy horizontal seam given the energy of each pixel in the input image.
+   *
+   * The image energy should have been computed before by the `compute_energy` method in the `Energy` class.
+   *
+   * This is the second version of the seam finding algorithm. In addition to storing and finding the lowest-energy value of any seam,
+   * it also stores back pointers used to reconstruct the lowest-energy seam.
+   *
+   *
+   * @return a pair with the list of y-coordinates forming the lowest-energy seam, starting at the left of the image.
+   * and the total energy of that seam.
+   */
+  std::pair<std::vector<std::size_t>, unsigned> compute_horizontal_seams() const noexcept;
+
+  /**
    * @brief Draws a red box at the right of the image at the specified y-coordinate.
    *
    * This is done to visualize approximately where a vertical seam ends.
@@ -84,6 +98,17 @@ public:
    * @return A new matrix of pixels with the red box.
    */
   static std::vector<std::vector<Color>> min_horizontal_seam_to_colors(const std::vector<std::vector<Color>> &pixels, std::size_t min_end_i) noexcept;
+
+  /**
+   * @brief Draws a red line on the image along the given seam.
+   *
+   * This is done to visualize where the seam is.
+   *
+   * @param pixels The matrix of pixels.
+   * @param seam_cols the list of j-coordinates forming the lowest-energy seam.
+   * @return std::vector<std::vector<Color>>
+   */
+  static std::vector<std::vector<Color>> min_horizontal_seams_to_colors(const std::vector<std::vector<Color>> &pixels, const std::vector<std::size_t> &seam_cols) noexcept;
 
 private:
   const std::vector<std::vector<unsigned>> &energy;

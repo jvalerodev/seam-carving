@@ -25,7 +25,7 @@ vector<vector<Color>> read_image(const string &filename)
 void write_image(const string &filename, const vector<vector<Color>> &pixels)
 {
   auto dot_position = filename.find_last_of('.');
-  string fn{filename.substr(0, dot_position) + string{"-seams"} + filename.substr(dot_position)};
+  string fn{filename.substr(0, dot_position) + string{"-horizontal-seams"} + filename.substr(dot_position)};
 
   Png output{fn};
 
@@ -52,9 +52,9 @@ int main(int argc, char *argv[])
   Energy energy(pixels);
   auto computed_energy = energy.compute_energy();
   Seam seam(computed_energy);
-  auto computed_seam = seam.compute_vertical_seams();
+  auto computed_seam = seam.compute_horizontal_seams();
 
-  write_image(argv[1], Seam::min_seams_to_colors(pixels, computed_seam.first));
+  write_image(argv[1], Seam::min_horizontal_seams_to_colors(pixels, computed_seam.first));
 
   cout << "Everything ok!" << endl;
   return EXIT_SUCCESS;

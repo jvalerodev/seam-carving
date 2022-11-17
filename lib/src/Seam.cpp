@@ -12,6 +12,7 @@ std::pair<std::vector<std::size_t>, unsigned> get_optimal_vertical_path(std::vec
 // Horizontal functions
 std::vector<std::vector<unsigned>> get_horizontal_cumulative_energy_matrix(const std::vector<std::vector<unsigned>> &energy) noexcept;
 std::pair<std::size_t, unsigned> get_min_horizontal_energy_pixel(const std::vector<std::vector<unsigned>> &cumulative_energy) noexcept;
+std::pair<std::vector<std::size_t>, unsigned> get_optimal_horizontal_path(std::vector<std::vector<unsigned>> cumulative_energy) noexcept;
 
 Seam::Seam(const std::vector<std::vector<unsigned>> &_energy) noexcept
     : energy(_energy)
@@ -55,7 +56,7 @@ std::vector<std::vector<Color>> Seam::min_vertical_seam_to_colors(const std::vec
   return new_pixels;
 }
 
-std::vector<std::vector<Color>> Seam::min_seams_to_colors(const std::vector<std::vector<Color>> &pixels, const std::vector<std::size_t> &seam_cols) noexcept
+std::vector<std::vector<Color>> Seam::min_vertical_seams_to_colors(const std::vector<std::vector<Color>> &pixels, const std::vector<std::size_t> &seam_cols) noexcept
 {
   long h = pixels.size();
   long w = pixels[0].size();
@@ -64,7 +65,6 @@ std::vector<std::vector<Color>> Seam::min_seams_to_colors(const std::vector<std:
 
   for (std::size_t i = 0; i < seam_cols.size(); ++i)
   {
-
     std::size_t min_j = std::max(long(seam_cols[i]) - 2, 0L);
     std::size_t max_j = std::min(long(seam_cols[i]) + 2, w - 1);
 
@@ -84,6 +84,13 @@ std::pair<std::size_t, unsigned> Seam::compute_horizontal_seam() const noexcept
   return get_min_horizontal_energy_pixel(cumulative_energy);
 }
 
+std::pair<std::vector<std::size_t>, unsigned> Seam::compute_horizontal_seams() const noexcept
+{
+  std::vector<std::vector<unsigned>> cumulative_energy = get_horizontal_cumulative_energy_matrix(energy);
+
+  return get_optimal_horizontal_path(cumulative_energy);
+}
+
 std::vector<std::vector<Color>> Seam::min_horizontal_seam_to_colors(const std::vector<std::vector<Color>> &pixels, std::size_t end_i) noexcept
 {
   long h = pixels.size();
@@ -98,6 +105,27 @@ std::vector<std::vector<Color>> Seam::min_horizontal_seam_to_colors(const std::v
 
   for (std::size_t j = min_j; j < w; ++j)
   {
+    for (std::size_t i = min_i; i <= max_i; ++i)
+    {
+      new_pixels[i][j] = Color(255, 0, 0);
+    }
+  }
+
+  return new_pixels;
+}
+
+std::vector<std::vector<Color>> Seam::min_horizontal_seams_to_colors(const std::vector<std::vector<Color>> &pixels, const std::vector<std::size_t> &seam_cols) noexcept
+{
+  long h = pixels.size();
+  long w = pixels[0].size();
+
+  std::vector<std::vector<Color>> new_pixels{pixels};
+
+  for (std::size_t j = 0; j < seam_cols.size(); ++j)
+  {
+    std::size_t min_i = std::max(long(seam_cols[j]) - 2, 0L);
+    std::size_t max_i = std::min(long(seam_cols[j]) + 2, w - 1);
+
     for (std::size_t i = min_i; i <= max_i; ++i)
     {
       new_pixels[i][j] = Color(255, 0, 0);
@@ -270,4 +298,47 @@ std::pair<std::size_t, unsigned> get_min_horizontal_energy_pixel(const std::vect
   }
 
   return std::make_pair(index, min_energy);
+}
+
+std::pair<std::vector<std::size_t>, unsigned> get_optimal_horizontal_path(std::vector<std::vector<unsigned>> cumulative_energy) noexcept
+{
+  long height = cumulative_energy.size();
+  long width = cumulative_energy[0].size();
+
+  std::pair<std::size_t, unsigned> min_energy_pixel_pair = get_min_horizontal_energy_pixel(cumulative_energy);
+  std::size_t index = min_energy_pixel_pair.first;
+  unsigned min_energy = min_energy_pixel_pair.second;
+
+  std::vector<std::size_t> optimal_pixel_path(width, 0);
+  optimal_pixel_path[width - 1] = index;
+
+  for (int j = width - 1; j > 0; j--)
+  {
+    if (index == 0) // Top
+    {
+      if (cumulative_energy[index][j - 1] > cumulative_energy[index + 1][j - 1]) // Left vs. Bottom-Left
+        index++;
+    }
+    else if (index == height - 1) // Bottom
+    {
+      if (cumulative_energy[index][j - 1] > cumulative_energy[index - 1][j - 1]) // Left vs. Top-Left
+        index--;
+    }
+    else if (cumulative_energy[index][j - 1] > cumulative_energy[index - 1][j - 1]) // Left vs. Top-Left
+    {
+      if (cumulative_energy[index - 1][j - 1] < cumulative_energy[index + 1][j - 1]) // Top-Left vs. Bottom-Left
+        index--;
+      else
+        index++;
+    }
+    else
+    {
+      if (cumulative_energy[index][j - 1] > cumulative_energy[index + 1][j - 1]) // Left vs. Bottom-Left
+        index++;
+    }
+
+    optimal_pixel_path[j - 1] = index; // Save path
+  }
+
+  return std::make_pair(optimal_pixel_path, min_energy);
 }
