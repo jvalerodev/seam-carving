@@ -3,8 +3,6 @@
 #include <Color.hpp>
 #include <Energy.hpp>
 
-unsigned get_energy(const std::vector<std::vector<Color>> &pixels, long width, long height, int i, int j) noexcept;
-
 Energy::Energy(const std::vector<std::vector<Color>> &_pixels) noexcept
     : pixels(_pixels)
 {
@@ -20,7 +18,7 @@ std::vector<std::vector<unsigned>> Energy::compute_energy() const noexcept
   {
     for (int j = 0; j < width; j++)
     {
-      unsigned energy = get_energy(pixels, width, height, i, j);
+      unsigned energy = energy_at(i, j);
       energy_matrix[i][j] = energy;
     }
   }
@@ -64,11 +62,6 @@ unsigned Energy::energy_at(std::size_t i, std::size_t j) const noexcept
   long height = pixels.size();
   long width = pixels[0].size();
 
-  return get_energy(pixels, width, height, i, j);
-}
-
-unsigned get_energy(const std::vector<std::vector<Color>> &pixels, long width, long height, int i, int j) noexcept
-{
   int rx = 0, gx = 0, bx = 0;
   int ry = 0, gy = 0, by = 0;
 
