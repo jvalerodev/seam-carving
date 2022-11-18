@@ -1,3 +1,6 @@
-/main/bin/
-/test/bin/
-/resources/
+/main/bin/*
+/test/bin/*
+/resources/*
+.vscode
+
+!.gitkeep
