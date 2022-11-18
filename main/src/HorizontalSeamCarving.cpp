@@ -7,11 +7,11 @@
 
 using namespace std;
 
-vector<vector<Color>> read_image(const string& filename)
+vector<vector<Color>> read_image(const string &filename)
 {
   Png input{filename};
   vector<vector<Color>> pixels;
-  
+
   cout << "Reading image\n";
   if (!input.read(pixels))
   {
@@ -23,13 +23,13 @@ vector<vector<Color>> read_image(const string& filename)
   return pixels;
 }
 
-void write_image(const string& filename, const vector<vector<Color>>& pixels, std::size_t n)
+void write_image(const string &filename, const vector<vector<Color>> &pixels, std::size_t n)
 {
   auto dot_position = filename.find_last_of('.');
-  string fn{filename.substr(0, dot_position) + string{"-vertical-resized-"} + to_string(n) + filename.substr(dot_position)};
+  string fn{filename.substr(0, dot_position) + string{"-horizontal-resized-"} + to_string(n) + filename.substr(dot_position)};
 
   Png output{fn};
-  
+
   cout << "Writing image\n";
   if (!output.write(pixels))
   {
@@ -40,7 +40,7 @@ void write_image(const string& filename, const vector<vector<Color>>& pixels, st
   cout << "Created the file " << fn << " successfully\n";
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
   if (argc < 3)
   {
@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
   Carve carve{pixels};
 
   cout << "Removing the " << n << " lowest seams\n";
-  auto resized_pixels = carve.remove_n_lowest_seams(n);
+  auto resized_pixels = carve.remove_n_lowest_horizontal_seams(n);
 
   write_image(argv[1], resized_pixels, n);
 
